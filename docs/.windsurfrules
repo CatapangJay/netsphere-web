@@ -1,0 +1,124 @@
+You are an expert in TypeScript, React, Next.js, and Web UI development.
+You are building a modular ISP Management Web App using Next.js, Supabase, Mikrotik API, and Shadcn UI.
+
+Architecture & OOP Principles
+- Apply Object-Oriented Programming using TypeScript’s `class`, `interface`, and `implements`.
+- Follow SOLID Principles:
+  - S: Single Responsibility — split logic into focused services (e.g., BillingService, MikrotikClient).
+  - O: Open/Closed — extend behavior via inheritance or composition, avoid modifying core logic.
+  - L: Liskov Substitution — use interfaces to make modules interchangeable.
+  - I: Interface Segregation — create small, focused interfaces.
+  - D: Dependency Inversion — inject dependencies; avoid hardcoded implementations.
+- Prefer composition over inheritance when behavior sharing is needed.
+
+Folder & Code Organization
+- Structure by feature: `/features`, `/components`, `/services`, `/utils`, `/types`, `/lib`.
+- Use named exports and descriptive folder names (e.g., `billing-history`, `mikrotik-api`).
+- PascalCase for components, camelCase for variables, lowercase-dash-case for folders.
+
+TypeScript & Patterns
+- Use `interface` over `type` for object shapes.
+- Avoid `any`; use `unknown` and narrow it.
+- Use `readonly`, `private`, `protected` as needed.
+- Leverage factory functions for service instantiation with dependency injection.
+- Avoid logic in constructors—keep them side-effect-free.
+
+State Management
+- Local component state: `useState`, `useReducer`.
+- Global app state: `React.Context` + `useReducer` or Zustand.
+- Use `react-query` for server state (e.g., invoices, router config).
+- Normalize global state and avoid deep nesting.
+
+Asynchronous Data Handling
+- Use `react-query` for fetching, caching, retries, and background updates.
+- Handle loading, error, and success states explicitly and consistently.
+- Display fallback UIs and retry mechanisms for failed network calls.
+
+Styling & UI
+- Use Shadcn UI + Tailwind CSS.
+- Responsive design with Flexbox and Tailwind breakpoints.
+- Support dark mode with class-based toggling.
+- Use `framer-motion` for microinteractions (slide-ins, modals).
+- Build accessible components with ARIA attributes and keyboard navigation.
+
+Authentication & Authorization
+- Supabase Auth for user login/session management.
+- Role-based access control with Supabase RLS.
+- Middleware for page protection.
+- Use `useUser()` or a custom `useSession()` hook for managing auth state.
+
+Networking & API
+- Encapsulate router logic in `MikrotikService` using `axios`.
+- Use retry patterns and handle timeout failures gracefully.
+- Avoid direct API access in UI — use services/hooks.
+
+Billing & Payments
+- Use Supabase Functions or cron-based tasks for recurring billing.
+- Payment support: GCash, PayMaya, bank transfers.
+- Generate and email invoices via Gmail API.
+- Log all billing activities and email status for audit trail.
+
+Email & Notifications
+- Gmail API for email sending.
+- Email templates: welcome, due notice, ticket replies.
+- Log all outgoing messages with status, retries, and user feedback.
+
+Performance Optimization
+- Use code-splitting (`next/dynamic`) for large or infrequently-used components.
+- Memoize expensive renders with `useMemo`, `useCallback`, and `React.memo`.
+- Lazy-load images and heavy modules (charts, PDFs).
+- Optimize Supabase queries and indexes.
+- Use a CDN (e.g., Cloudflare) and caching headers.
+- Debounce inputs and throttle live queries (e.g., network usage, search bars).
+
+Error Handling and Validation
+- Use Zod for schema validation (forms, API responses).
+- Handle errors at the top of functions with early returns.
+- Avoid `else` nesting—use guard clauses.
+- Implement global error boundaries.
+- Log API and app-level errors to Sentry or a centralized logger.
+
+Security
+- Sanitize all user inputs before storage or processing.
+- Use HTTPS for all external communications.
+- Use Supabase RLS to restrict DB access by role.
+- Avoid storing sensitive tokens in localStorage; use encrypted cookies or Supabase's secure sessions.
+- Validate payloads server-side (even if already validated on client).
+- Monitor for suspicious access patterns.
+
+Internationalization (i18n)
+- Use `next-i18next` or `react-intl` for multi-language support.
+- Store translations in JSON files by locale.
+- Auto-detect and switch based on user browser or profile preference.
+- Support RTL layouts and text scaling.
+- Use `lang` and `dir` HTML attributes correctly.
+
+Key Conventions
+1. Use strict TypeScript settings (`strict: true`) for better safety.
+2. Favor functional components; avoid class-based React components.
+3. Follow Prettier + ESLint rules for consistent code style.
+4. Use Git Flow: feature → develop → main; squash commits before merging.
+5. Use conventional commit messages (`feat:`, `fix:`, `chore:`).
+6. Log significant actions (login, billing, changes) for traceability.
+7. Write JSDoc for exported services and interfaces.
+
+Testing
+- Unit tests: Vitest or Jest.
+- Component tests: React Testing Library.
+- Integration tests: validate workflows like "Login → Billing → Router Config".
+- Mock Supabase and Mikrotik responses in tests.
+- Use CI pipelines to run tests automatically.
+
+Hosting & Deployment
+- Use Hostinger PH, Web.com.ph, or SiteGround for cheap local hosting.
+- Use GitHub Actions for automated deploys.
+- Use `.env.local` for environment-specific variables.
+- Separate staging and production environments.
+
+Delivery & Timeline
+- Time Budget: 2–4 hrs weekday, 10 hrs weekends.
+- Track feature ETA and mark progress:
+  - ✅ Done
+  - 🟢 In Progress
+  - 🔴 Blocked
+- Prioritize: Auth → Billing → Router Integration → Dashboard → Email
