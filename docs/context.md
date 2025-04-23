@@ -19,10 +19,10 @@ Small to medium ISPs needing an all-in-one solution to manage their subscribers,
 ## 2. Tech Stack Overview
 
 **Frontend Framework:**  
-- React 18 with TypeScript  
-- Next.js 14 (App Router)  
-- Server Components for static parts  
-- Client Components for interactive elements  
+- React 18 with TypeScript
+- Next.js 14 (App Router)
+- Server Components for static parts
+- Client Components for interactive elements
 
 **UI Library:**  
 - Tailwind CSS v3.3  
@@ -86,7 +86,106 @@ Small to medium ISPs needing an all-in-one solution to manage their subscribers,
 - Advanced reporting (PowerBI-like)  
 - Mobile technician app integration  
 
-## 4. User Flow
+## 4. Pricing Plans
+### Shared Server Plans
+**Basic**
+
+Monthly: ₱300 | Yearly: ₱5,000
+
+Features: 50/100 Customers, 1 Mikrotik, Built-in Android App, Free domain (.com & .net)
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+**Starter**
+
+Monthly: ₱500 | Yearly: ₱7,000
+
+Features: 150/300 Customers, 2 Mikrotik, Built-in Android App, Free domain (.com & .net)
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+**Enterprise**
+
+Monthly: ₱850 | Yearly: ₱8,000
+
+Features: 500 Customers, 3 Mikrotik, Built-in Apps for Android, iOS, and Windows, Free domain (.com & .net)
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+**Silver**
+
+Monthly: ₱1,200 | Yearly: ₱9,000
+
+Features: 800 Customers, 4 Mikrotik, Built-in Apps for Android, iOS, and Windows, Free domain (.com & .net)
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+### Private Server Plans
+**Gold**
+
+Monthly: ₱1,500 | Yearly: ₱10,000
+
+Features: 1,000 Customers, 5 Mikrotik, Built-in Apps for Android, iOS, and Windows, Free domain (.com & .net)
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+**Platinum**
+
+Monthly: ₱2,000 | Yearly: ₱12,000
+
+Features: 1,500 Customers, 6 Mikrotik, Built-in Apps for Android, iOS, and Windows, Free domain (.com & .net), Free Email Server (1 Account)
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+**Premium**
+
+Monthly: ₱2,500 | Yearly: ₱15,500
+
+Features: 2,000 Customers, 7 Mikrotik, Built-in Apps for Android, iOS, and Windows, Free domain (.com & .net), Free Email Server (1 Account)
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+**Cloud Server**
+
+Monthly: ₱3,500 | Yearly: ₱22,000
+
+Features: 3,000 Customers, 10 Mikrotik, Built-in Apps for Android, iOS, and Windows, Free domain (.com, .net, .ph), Free Email Server
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+**Business Pro**
+
+Monthly: ₱5,500 | Yearly: ₱25,000
+
+Features: 5,500 Customers, 15 Mikrotik, Built-in Apps for Android, iOS, and Windows, Free domain (.com, .net, .ph), Free Email Server
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+**Executive**
+
+Monthly: ₱8,500 | Yearly: ₱30,000
+
+Features: 8,000 Customers, 25 Mikrotik, Built-in Apps for Android, iOS, and Windows, Free domain (.com, .net, .ph), Free Email Server
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+**Executive +**
+
+Monthly: ₱10,500 | Yearly: ₱35,000
+
+Features: 10,500 Customers, 35 Mikrotik, Built-in Apps for Android, iOS, and Windows, Free domain (.com, .net, .ph), Free Email Server
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+**Executive Pro**
+
+Monthly: ₱15,000 | Yearly: ₱40,000
+
+Features: 15,500 Customers, 45 Mikrotik, Built-in Apps for Android, iOS, and Windows, Free domain (.com, .net, .ph), Free Email Server
+
+Includes: Payment Gateway, Mikrotik Integration, SMS, Telegram, and Whatsapp Integration
+
+## 5. User Flow
 
 **Admin Onboarding:**  
 1. Sign up with business details  
@@ -111,7 +210,7 @@ Small to medium ISPs needing an all-in-one solution to manage their subscribers,
 4. Logs work completed  
 5. System updates customer records  
 
-## 5. Design & UI/UX Guidelines
+## 6. Design & UI/UX Guidelines
 
 **Visual Style:**  
 - Dark mode primary (light mode optional)  
@@ -138,7 +237,7 @@ Small to medium ISPs needing an all-in-one solution to manage their subscribers,
 - Reduced motion options  
 - Color contrast checking  
 
-## 6. Technical Implementation
+## 7. Technical Implementation
 
 **Frontend Architecture:**  
 - App Router with route groups  
@@ -190,7 +289,7 @@ export async function POST(req: Request) {
 }
 ```
 
-## 7. Development Setup
+## 8. Development Setup
 
 **Requirements:**  
 - Node.js 18+  
@@ -220,5 +319,3 @@ export async function POST(req: Request) {
 - Jest for unit tests  
 - Storybook for UI components  
 - Postman for API testing  
-
-This blueprint provides a complete foundation for building a professional-grade ISP management platform using the specified modern web technologies. The architecture is designed for scalability while maintaining development efficiency through the chosen stack.
