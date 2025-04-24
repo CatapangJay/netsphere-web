@@ -259,7 +259,9 @@ export default function Home() {
                       </ul>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full">Get Started</Button>
+                      <Link href={`/auth/register?plan=${plan.name.toLowerCase()}`}>
+                        <Button className="w-full">Get Started</Button>
+                      </Link>
                     </CardFooter>
                   </Card>
                 ))}
@@ -293,7 +295,9 @@ export default function Home() {
                       </ul>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full">Get Started</Button>
+                      <Link href={`/auth/register?plan=${plan.name.toLowerCase()}`}>
+                        <Button className="w-full">Get Started</Button>
+                      </Link>
                     </CardFooter>
                   </Card>
                 ))}

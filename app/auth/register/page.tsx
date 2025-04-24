@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -62,6 +62,8 @@ const plans = [
 
 export default function RegisterPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const initialPlan = searchParams.get("plan") ?? ""
   const { toast } = useToast()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -78,7 +80,7 @@ export default function RegisterPage() {
       address: "",
       city: "",
       country: "",
-      plan: "",
+      plan: initialPlan,
     },
   })
 
