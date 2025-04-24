@@ -14,7 +14,7 @@ async function seed() {
 
   console.log('Seeding service plans...');
   const plansData = [
-    { name: 'Basic Plan', description: '10Mbps/10Mbps', price: 20, bandwidth_up: 10, bandwidth_down: 10, is_active: true },
+    { name: 'Basic Plan 1', description: '10Mbps/10Mbps', price: 20, bandwidth_up: 10, bandwidth_down: 10, is_active: true },
     { name: 'Premium Plan', description: '100Mbps/100Mbps', price: 80, bandwidth_up: 100, bandwidth_down: 100, is_active: true }
   ];
   const { data: plans, error: planError } = await supabase.from('service_plans').insert(plansData).select();
