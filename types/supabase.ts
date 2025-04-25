@@ -40,7 +40,30 @@ export interface Database {
           notes?: string | null
           user_id?: string | null
         }
-      }
+      },
+      companies: {
+        Row: {
+          id: string
+          name: string
+          address: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          address: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          address?: string
+          created_at?: string
+          updated_at?: string
+        }
+      },
       service_plans: {
         Row: {
           id: string
@@ -75,7 +98,7 @@ export interface Database {
           bandwidth_down?: number
           is_active?: boolean
         }
-      }
+      },
       subscriptions: {
         Row: {
           id: string
@@ -113,7 +136,7 @@ export interface Database {
           ip_address?: string | null
           mac_address?: string | null
         }
-      }
+      },
       invoices: {
         Row: {
           id: string
@@ -122,7 +145,7 @@ export interface Database {
           customer_id: string
           subscription_id: string
           amount: number
-          status: "draft" | "sent" | "paid" | "overdue" | "cancelled"
+          status: "draft" | "sent" | "paid" | "overdue" | "cancelled" | "pending"
           due_date: string
           paid_date: string | null
           invoice_number: string
@@ -151,7 +174,7 @@ export interface Database {
           paid_date?: string | null
           invoice_number?: string
         }
-      }
+      },
       network_devices: {
         Row: {
           id: string
@@ -189,7 +212,7 @@ export interface Database {
           status?: "online" | "offline" | "unknown"
           last_checked?: string | null
         }
-      }
+      },
       tickets: {
         Row: {
           id: string

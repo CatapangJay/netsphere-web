@@ -13,49 +13,70 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { CreditCard, Download, FileText, Filter, MoreHorizontal, Plus, Search } from "lucide-react"
+import { Invoice as InvoiceModel } from "@/app/dashboard/models/Invoice"
 
-// Mock data for invoices
-const invoices = [
-  {
+// Typed mock data for invoices
+const invoices: InvoiceModel[] = [
+  new InvoiceModel({
     id: "INV-001",
-    customer: "John Smith",
-    amount: "$129.99",
+    created_at: "Jan 15, 2023",
+    updated_at: "Jan 15, 2023",
+    customer_id: "John Smith",
+    subscription_id: "sub-01",
+    amount: 129.99,
     status: "paid",
-    date: "Jan 15, 2023",
-    dueDate: "Jan 30, 2023",
-  },
-  {
+    due_date: "Jan 30, 2023",
+    paid_date: null,
+    invoice_number: "INV-001",
+  }),
+  new InvoiceModel({
     id: "INV-002",
-    customer: "Sarah Johnson",
-    amount: "$89.99",
+    created_at: "Feb 3, 2023",
+    updated_at: "Feb 3, 2023",
+    customer_id: "Sarah Johnson",
+    subscription_id: "sub-02",
+    amount: 89.99,
     status: "paid",
-    date: "Feb 3, 2023",
-    dueDate: "Feb 18, 2023",
-  },
-  {
+    due_date: "Feb 18, 2023",
+    paid_date: null,
+    invoice_number: "INV-002",
+  }),
+  new InvoiceModel({
     id: "INV-003",
-    customer: "Michael Brown",
-    amount: "$199.99",
+    created_at: "Mar 22, 2023",
+    updated_at: "Mar 22, 2023",
+    customer_id: "Michael Brown",
+    subscription_id: "sub-03",
+    amount: 199.99,
     status: "overdue",
-    date: "Mar 22, 2023",
-    dueDate: "Apr 6, 2023",
-  },
-  {
+    due_date: "Apr 6, 2023",
+    paid_date: null,
+    invoice_number: "INV-003",
+  }),
+  new InvoiceModel({
     id: "INV-004",
-    customer: "Emily Davis",
-    amount: "$59.99",
+    created_at: "Apr 10, 2023",
+    updated_at: "Apr 10, 2023",
+    customer_id: "Emily Davis",
+    subscription_id: "sub-04",
+    amount: 59.99,
     status: "pending",
-    date: "Apr 10, 2023",
-    dueDate: "Apr 25, 2023",
-  },
-  {
+    due_date: "Apr 25, 2023",
+    paid_date: null,
+    invoice_number: "INV-004",
+  }),
+  new InvoiceModel({
     id: "INV-005",
-    customer: "Robert Wilson",
-    amount: "$149.99",
+    created_at: "May 5, 2023",
+    updated_at: "May 5, 2023",
+    customer_id: "Robert Wilson",
+    subscription_id: "sub-05",
+    amount: 149.99,
     status: "draft",
-    date: "May 5, 2023",
-    dueDate: "May 20, 2023",
-  },
+    due_date: "May 20, 2023",
+    paid_date: null,
+    invoice_number: "INV-005",
+  }),
 ]
 
 // Mock data for payment methods
@@ -185,9 +206,9 @@ export default function BillingPage() {
                 <TableBody>
                   {invoices.map((invoice) => (
                     <TableRow key={invoice.id}>
-                      <TableCell className="font-medium">{invoice.id}</TableCell>
-                      <TableCell>{invoice.customer}</TableCell>
-                      <TableCell>{invoice.amount}</TableCell>
+                      <TableCell className="font-medium">{invoice.invoice_number}</TableCell>
+                      <TableCell>{invoice.customer_id}</TableCell>
+                      <TableCell>${invoice.amount}</TableCell>
                       <TableCell>
                         <Badge
                           variant={
@@ -203,8 +224,8 @@ export default function BillingPage() {
                           {invoice.status}
                         </Badge>
                       </TableCell>
-                      <TableCell>{invoice.date}</TableCell>
-                      <TableCell>{invoice.dueDate}</TableCell>
+                      <TableCell>{invoice.created_at}</TableCell>
+                      <TableCell>{invoice.due_date}</TableCell>
                       <TableCell className="text-right">
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>

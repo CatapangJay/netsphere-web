@@ -9,7 +9,7 @@ export class Customer {
   name!: string;
   email!: string;
   phone!: string;
-  address!: string;
+  company_id!: string;
   status!: CustomerRow["status"];
   notes!: string | null;
   user_id!: string | null;

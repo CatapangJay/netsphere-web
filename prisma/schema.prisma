@@ -1,0 +1,133 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model NetworkDevice {
+  id          String   @id @default(uuid())
+  name        String
+  ipAddress   String   @map("ip_address")
+  apiPort     Int      @map("api_port")
+  deviceType  String   @map("device_type")
+  credentials String
+  status      String
+  lastChecked DateTime? @map("last_checked")
+  createdAt   DateTime  @map("created_at") @default(now())
+  updatedAt   DateTime  @map("updated_at") @updatedAt
+
+  @@map("network_devices")
+}
+
+model Company {
+  id         String   @id @default(uuid())
+  name       String
+  address    String
+  createdAt  DateTime @map("created_at") @default(now())
+  updatedAt  DateTime @map("updated_at") @updatedAt
+  customers  Customer[]
+
+  @@map("companies")
+}
+
+model Customer {
+  id         String   @id @default(uuid())
+  name       String
+  email      String
+  phone      String
+  address    String
+  status     String
+  notes      String?  
+  userId     String?  @map("user_id")
+  companyId  String?  @map("company_id")
+  company    Company?      @relation(fields: [companyId], references: [id])
+  subscriptions Subscription[]
+  invoices      Invoice[]
+  tickets       Ticket[]
+  createdAt  DateTime @map("created_at") @default(now())
+  updatedAt  DateTime @map("updated_at") @updatedAt
+
+  @@map("customers")
+}
+
+model ServicePlan {
+  id            String   @id @default(uuid())
+  name          String
+  description   String
+  price         Float
+  bandwidthUp   Int      @map("bandwidth_up")
+  bandwidthDown Int      @map("bandwidth_down")
+  isActive      Boolean  @map("is_active")
+  subscriptions Subscription[]
+  createdAt     DateTime @map("created_at") @default(now())
+  updatedAt     DateTime @map("updated_at") @updatedAt
+
+  @@map("service_plans")
+}
+
+model Subscription {
+  id             String   @id @default(uuid())
+  customerId     String   @map("customer_id")
+  customer      Customer     @relation(fields: [customerId], references: [id])
+  servicePlanId  String   @map("service_plan_id")
+  servicePlan   ServicePlan  @relation(fields: [servicePlanId], references: [id])
+  startDate      DateTime @map("start_date")
+  endDate        DateTime? @map("end_date")
+  status         String
+  ipAddress      String?  @map("ip_address")
+  macAddress     String?  @map("mac_address")
+  createdAt      DateTime @map("created_at") @default(now())
+  updatedAt      DateTime @map("updated_at") @updatedAt
+
+  @@map("subscriptions")
+}
+
+model Invoice {
+  id             String   @id @default(uuid())
+  customerId     String   @map("customer_id")
+  customer       Customer     @relation(fields: [customerId], references: [id])
+  subscriptionId String   @map("subscription_id")
+  subscription   Subscription @relation(fields: [subscriptionId], references: [id])
+  amount         Float
+  status         String
+  dueDate        DateTime @map("due_date")
+  paidDate       DateTime? @map("paid_date")
+  invoiceNumber  String   @map("invoice_number")
+  createdAt      DateTime @map("created_at") @default(now())
+  updatedAt      DateTime @map("updated_at") @updatedAt
+
+  @@map("invoices")
+}
+
+model Ticket {
+  id          String   @id @default(uuid())
+  customerId  String   @map("customer_id")
+  customer     Customer    @relation(fields: [customerId], references: [id])
+  subject     String
+  description String
+  status      String
+  priority    String
+  assignedTo  String?  @map("assigned_to")
+  createdAt   DateTime @map("created_at") @default(now())
+  updatedAt   DateTime @map("updated_at") @updatedAt
+
+  @@map("tickets")
+}
+
+model Address {
+  id         String    @id @default(uuid())
+  psgcCode   String    @map("psgc_code")
+  country    String
+  region     String
+  province   String
+  city       String
+  barangay   String
+  createdAt  DateTime  @map("created_at") @default(now())
+  updatedAt  DateTime  @map("updated_at") @updatedAt
+
+  @@map("addresses")
+}
