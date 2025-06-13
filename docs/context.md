@@ -319,3 +319,55 @@ export async function POST(req: Request) {
 - Jest for unit tests  
 - Storybook for UI components  
 - Postman for API testing  
+
+---
+
+## 📋 Implementation Task Checklists (Copy to GitHub)
+
+### Billing System
+- [ ] Design database schema for invoices, payments, discounts, and taxes
+- [ ] Implement automated invoice generation with customizable templates
+- [ ] Develop recurring billing logic (with proration)
+- [ ] Integrate payment gateways (Stripe, PayPal)
+- [ ] Implement late fee calculation logic
+- [ ] Add tax management features
+- [ ] Support discount/promo code application
+- [ ] Build financial reporting dashboard
+- [ ] Write unit and integration tests for billing flows
+
+### MikroTik Integration
+- [ ] Set up API connection management for MikroTik devices
+- [ ] Implement bandwidth monitoring (polling or real-time)
+- [ ] Add hotspot user management UI and backend
+- [ ] Sync PPPoE accounts with MikroTik
+- [ ] Implement queue tree management
+- [ ] Render real-time traffic graphs
+- [ ] Automate provisioning of new devices
+- [ ] Write integration tests for MikroTik API flows
+
+### Customer Management
+- [ ] Create customer profile pages with service history
+- [ ] Implement service plan management UI and backend
+- [ ] Build ticket system with SLA tracking
+- [ ] Add document storage (contracts, IDs, etc.)
+- [ ] Integrate communication log per customer
+- [ ] Develop self-service customer portal
+- [ ] Write tests for customer management features
+
+### Network Operations
+- [ ] Visualize network topology in the UI
+- [ ] Implement device status monitoring (live)
+- [ ] Set up automated uptime/downtime alerts
+- [ ] Add bandwidth usage analytics dashboard
+- [ ] Implement IP address management
+- [ ] Integrate speed test functionality
+- [ ] Write tests for network operations features
+
+### Premium Features
+- [ ] Develop AI-powered network anomaly detection
+- [ ] Add predictive capacity planning tools
+- [ ] Support creation of custom API endpoints
+- [ ] Implement white-label branding options
+- [ ] Build advanced reporting (PowerBI-like)
+- [ ] Integrate mobile technician app
+- [ ] Write tests for premium features

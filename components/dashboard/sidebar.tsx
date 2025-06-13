@@ -4,7 +4,7 @@ import type React from "react"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BarChart3, CreditCard, Globe, LayoutDashboard, LifeBuoy, Network, Router, Settings, Users } from "lucide-react"
+import { BarChart3, Briefcase, CreditCard, Globe, LayoutDashboard, LifeBuoy, Network, Router, Settings, Users } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -51,6 +51,11 @@ export function Sidebar({ className, collapsed = false }: SidebarNavProps) {
       title: "Support",
       href: "/dashboard/support",
       icon: <LifeBuoy className="h-5 w-5" />,
+    },
+    {
+      title: "Services",
+      href: "/dashboard/services",
+      icon: <Briefcase className="h-5 w-5" />,
     },
     {
       title: "Settings",

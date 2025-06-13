@@ -114,7 +114,7 @@ export default function RegisterPage() {
         description: "Please check your email to verify your account",
       })
 
-      router.push("/auth/verification")
+      router.push("/auth/verify")
     } catch (error: any) {
       toast({
         title: "Registration failed",
