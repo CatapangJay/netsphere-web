@@ -48,6 +48,11 @@ export function Sidebar({ className, collapsed = false }: SidebarNavProps) {
       icon: <BarChart3 className="h-5 w-5" />,
     },
     {
+      title: "Services",
+      href: "/dashboard/services",
+      icon: <Briefcase className="h-5 w-5" />,
+    },
+    {
       title: "Support",
       href: "/dashboard/support",
       icon: <LifeBuoy className="h-5 w-5" />,

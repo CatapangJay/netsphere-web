@@ -1,0 +1,30 @@
+model ServicePlan {
+  id            String   @id @default(uuid())
+  name          String
+  description   String[]
+  price         Float
+  bandwidth     Int      // in Mbps
+  type          String   // Wired or Wireless
+  category      String   
+  status        String   // Active or Inactive
+  displayStatus String   @map("display_status") // Active or Inactive 
+  imageUrl      String?  @map("image_url")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  
+  // Relations
+  subscriptions Subscription[]
+
+  @@map("service_plans")
+}
+
+model ServiceCategory {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  status      String   // Active or Inactive
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("service_categories")
+}
