@@ -23,6 +23,11 @@ export function Sidebar({ className, collapsed = false }: SidebarNavProps) {
       icon: <LayoutDashboard className="h-5 w-5" />,
     },
     {
+      title: "Services",
+      href: "/dashboard/services",
+      icon: <Briefcase className="h-5 w-5" />,
+    },
+    {
       title: "Customers",
       href: "/dashboard/customers",
       icon: <Users className="h-5 w-5" />,
@@ -48,19 +53,9 @@ export function Sidebar({ className, collapsed = false }: SidebarNavProps) {
       icon: <BarChart3 className="h-5 w-5" />,
     },
     {
-      title: "Services",
-      href: "/dashboard/services",
-      icon: <Briefcase className="h-5 w-5" />,
-    },
-    {
       title: "Support",
       href: "/dashboard/support",
       icon: <LifeBuoy className="h-5 w-5" />,
-    },
-    {
-      title: "Services",
-      href: "/dashboard/services",
-      icon: <Briefcase className="h-5 w-5" />,
     },
     {
       title: "Settings",

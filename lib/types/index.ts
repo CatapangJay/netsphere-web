@@ -6,6 +6,10 @@ export interface Plan {
   price: number
   dataLimit: string
   isActive: boolean
+  category: string
+  showInRegister: boolean
+  remark?: string
+  imageUrl?: string
   description?: string
   features?: string[]
   createdAt?: string

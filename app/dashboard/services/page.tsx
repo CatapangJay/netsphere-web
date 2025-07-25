@@ -23,6 +23,10 @@ export default function ServicesPage() {
       speed: "25 Mbps",
       price: 999,
       dataLimit: "Unlimited",
+      category: "Residential",
+      showInRegister: true,
+      remark: "Best for light browsing",
+      imageUrl: "https://via.placeholder.com/100",
       isActive: true,
     },
     {
@@ -32,6 +36,10 @@ export default function ServicesPage() {
       speed: "100 Mbps",
       price: 1999,
       dataLimit: "Unlimited",
+      category: "Business",
+      showInRegister: true,
+      remark: "Ideal for streaming and gaming",
+      imageUrl: "https://via.placeholder.com/100",
       isActive: true,
     },
   ]
@@ -44,6 +52,10 @@ export default function ServicesPage() {
       speed: "5 Mbps",
       price: 499,
       dataLimit: "100 GB",
+      category: "Residential",
+      showInRegister: true,
+      remark: "Basic coverage for rural areas",
+      imageUrl: "https://via.placeholder.com/100",
       isActive: true,
     },
   ]

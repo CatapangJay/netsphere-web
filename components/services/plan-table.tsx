@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Check, X, Pencil, Trash2 } from "lucide-react"
 import {
   Table,
   TableBody,
@@ -8,8 +9,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Pencil, Trash2 } from "lucide-react"
 import { Plan } from "@/lib/types"
+import Image from "next/image"
 
 interface PlanTableProps {
   plans: Plan[]
@@ -43,10 +44,12 @@ export function PlanTable({ plans, type }: PlanTableProps) {
         <TableHeader>
           <TableRow>
             <TableHead>Name</TableHead>
-            <TableHead>Speed</TableHead>
-            <TableHead>Data Limit</TableHead>
             <TableHead>Price</TableHead>
+            <TableHead>Category</TableHead>
             <TableHead>Status</TableHead>
+            <TableHead>Show in Register</TableHead>
+            <TableHead>Remark</TableHead>
+            <TableHead>Image</TableHead>
             <TableHead className="text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -54,13 +57,36 @@ export function PlanTable({ plans, type }: PlanTableProps) {
           {plans.map((plan) => (
             <TableRow key={plan.id}>
               <TableCell className="font-medium">{plan.name}</TableCell>
-              <TableCell>{plan.speed}</TableCell>
-              <TableCell>{plan.dataLimit}</TableCell>
               <TableCell>₱{plan.price.toLocaleString()}</TableCell>
+              <TableCell>{plan.category}</TableCell>
               <TableCell>
                 <Badge variant={plan.isActive ? 'default' : 'secondary'}>
                   {plan.isActive ? 'Active' : 'Inactive'}
                 </Badge>
+              </TableCell>
+              <TableCell>
+                {plan.showInRegister ? (
+                  <Check className="h-4 w-4 text-green-500" />
+                ) : (
+                  <X className="h-4 w-4 text-red-500" />
+                )}
+              </TableCell>
+              <TableCell className="max-w-[200px] truncate">{plan.remark || '-'}</TableCell>
+              <TableCell>
+                {plan.imageUrl ? (
+                  <div className="relative h-10 w-10">
+                    <Image
+                      src={plan.imageUrl}
+                      alt={plan.name}
+                      fill
+                      className="rounded-md object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="h-10 w-10 rounded-md bg-muted flex items-center justify-center">
+                    <span className="text-xs text-muted-foreground">No image</span>
+                  </div>
+                )}
               </TableCell>
               <TableCell className="text-right">
                 <div className="flex justify-end space-x-2">

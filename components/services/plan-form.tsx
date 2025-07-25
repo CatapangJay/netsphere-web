@@ -36,6 +36,10 @@ type PlanFormValues = {
   speed: string;
   price: number;
   dataLimit: string;
+  category: string;
+  showInRegister: boolean;
+  remark?: string;
+  imageUrl?: string;
   description?: string;
   isActive: boolean;
   features: string[];
@@ -60,6 +64,12 @@ const formSchema = z.object({
   dataLimit: z.string().min(1, {
     message: "Data limit is required.",
   }),
+  category: z.string().min(1, {
+    message: "Category is required.",
+  }),
+  showInRegister: z.boolean().default(true),
+  remark: z.string().optional(),
+  imageUrl: z.string().optional(),
   description: z.string().optional(),
   isActive: z.boolean().default(true),
   features: z.array(z.string()).default([])
@@ -89,6 +99,10 @@ export function PlanForm({ isOpen, onClose, type, plan }: PlanFormProps) {
       speed: plan?.speed || "",
       price: plan?.price || 0,
       dataLimit: plan?.dataLimit || "",
+      category: plan?.category || "",
+      showInRegister: plan?.showInRegister ?? true,
+      remark: plan?.remark || "",
+      imageUrl: plan?.imageUrl || "",
       description: plan?.description,
       isActive: plan?.isActive ?? true,
       features: plan?.features || [],
@@ -112,6 +126,10 @@ export function PlanForm({ isOpen, onClose, type, plan }: PlanFormProps) {
         speed: "",
         price: 0,
         dataLimit: "",
+        category: "",
+        showInRegister: true,
+        remark: "",
+        imageUrl: "",
         description: "",
         isActive: true,
         features: [],
@@ -144,6 +162,10 @@ export function PlanForm({ isOpen, onClose, type, plan }: PlanFormProps) {
         speed: values.speed,
         price: Number(values.price),
         dataLimit: values.dataLimit,
+        category: values.category,
+        showInRegister: values.showInRegister,
+        remark: values.remark,
+        imageUrl: values.imageUrl,
         description: values.description,
         isActive: values.isActive,
         features: values.features || [],
@@ -182,7 +204,7 @@ export function PlanForm({ isOpen, onClose, type, plan }: PlanFormProps) {
         
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FormField
                 control={form.control}
                 name="name"
@@ -192,6 +214,76 @@ export function PlanForm({ isOpen, onClose, type, plan }: PlanFormProps) {
                     <FormControl>
                       <Input placeholder="e.g., Premium Internet" {...field} />
                     </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="category"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Category</FormLabel>
+                    <FormControl>
+                      <Input placeholder="e.g., Residential, Business" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="showInRegister"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                    <div className="space-y-0.5">
+                      <FormLabel className="text-base">Show in Register</FormLabel>
+                      <FormDescription>
+                        Show this plan in the registration form
+                      </FormDescription>
+                    </div>
+                    <FormControl>
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="remark"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Remark</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Any additional notes" {...field} value={field.value || ''} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="imageUrl"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Image URL</FormLabel>
+                    <FormControl>
+                      <Input 
+                        placeholder="https://example.com/image.jpg" 
+                        {...field} 
+                        value={field.value || ''}
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      URL of the plan's image
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
